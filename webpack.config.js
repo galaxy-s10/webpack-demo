@@ -1,4 +1,5 @@
 const path = require('path')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
     entry: "./src/main.js",//入口文件
@@ -46,12 +47,21 @@ module.exports = {
                         presets: ['@babel/preset-env']
                     }
                 }
+            },
+            {
+                test: /\.vue$/,
+                use: [
+                    'vue-loader'
+                ]
             }
         ]
     },
-    resolve:{
-        alias:{
-            'vue$':'vue/dist/vue.esm.js'
+    resolve: {
+        alias: {
+            'vue$': 'vue/dist/vue.esm.js'
         }
-    }
+    },
+    plugins: [
+        new VueLoaderPlugin()
+    ]
 }

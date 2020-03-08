@@ -3,15 +3,13 @@ require('./css/normal.css')
 require('./css/aaa.less')
 
 import Vue from 'vue'
+// import com1 from './vue/hello'
+import hello from './vue/hello.vue'
 
-const app = new Vue({
+new Vue({
     el: "#app",
-    template:
-        `<div>
-    {{message}}
-    </div>
-    `,
-    data: {
-        message: 'hello vue'
+    template: '<hello />',
+    components: {
+        hello
     }
 })
