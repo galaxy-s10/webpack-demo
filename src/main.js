@@ -1,4 +1,4 @@
-import { add, mul } from './utils';
+const { add, mul } = require('./js/utils')
 require('./css/normal.css')
 require('./css/aaa.less')
 

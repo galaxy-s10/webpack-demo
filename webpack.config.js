@@ -31,10 +31,21 @@ module.exports = {
                         options: {
                             // 当小于8k,会将图片转成base64格式
                             // 当大于8k,需要使用file-loader模块进行解析
-                            limit: 8192
+                            limit: 8192,
+                            name: 'img/[name].[hash:8].[ext]'
                         }
                     }
                 ]
+            },
+            {
+                test: /\.m?js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
             }
         ]
     }
