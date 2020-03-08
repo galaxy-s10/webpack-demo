@@ -30,5 +30,8 @@
     "url-loader": "^3.0.0",
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "vue": "^2.6.11"
   }
 }

@@ -2,5 +2,16 @@ const { add, mul } = require('./js/utils')
 require('./css/normal.css')
 require('./css/aaa.less')
 
-console.log(add(20, 30))
-console.log(mul(20, 30))
+import Vue from 'vue'
+
+const app = new Vue({
+    el: "#app",
+    template:
+        `<div>
+    {{message}}
+    </div>
+    `,
+    data: {
+        message: 'hello vue'
+    }
+})
