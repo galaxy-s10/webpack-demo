@@ -7,7 +7,7 @@ export default {
   components: {},
   data() {
     return {
-      message: "hello vue"
+      message: "这里是hello"
     };
   },
   computed: {},
@@ -16,7 +16,7 @@ export default {
 };
 </script>
 
-<style >
+<style scoped>
 .title {
   color: red;
 }

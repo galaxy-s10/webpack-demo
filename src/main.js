@@ -1,15 +1,15 @@
-const { add, mul } = require('./js/utils')
+import Vue from 'vue'
+import hello from './component/hello.vue'
+import hello1 from './component/hello1.js'
 require('./css/normal.css')
 require('./css/aaa.less')
 
-import Vue from 'vue'
-// import com1 from './vue/hello'
-import hello from './vue/hello.vue'
-
 new Vue({
     el: "#app",
-    template: '<hello />',
+    template: '<hello1 />',
     components: {
-        hello
-    }
+        hello,
+        hello1
+    },
+    // render:h=>h(hello)
 })

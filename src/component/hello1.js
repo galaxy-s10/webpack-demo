@@ -6,7 +6,7 @@ export default {
         `,
     data() {
         return {
-            message: 'hello vue'
+            message: '这里是hello1'
         }
 
     }
