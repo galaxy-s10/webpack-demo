@@ -1,5 +1,6 @@
 <template>
-  <div class="title">{{message}}</div>
+  <div class="title">{{message}}
+  </div>
 </template>
 
 <script>
@@ -12,7 +13,9 @@ export default {
   },
   computed: {},
   methods: {},
-  mounted() {}
+  mounted() {
+    console.log(process.env.NODE_ENV)
+  }
 };
 </script>
 

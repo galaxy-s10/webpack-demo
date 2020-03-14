@@ -6,10 +6,11 @@ require('./css/aaa.less')
 
 new Vue({
     el: "#app",
-    template: '<hello1 />',
-    components: {
-        hello,
-        hello1
-    },
-    // render:h=>h(hello)
+    // template: '<hello />',
+    // components: {
+    //     hello,
+    //     hello1
+    // },
+    // render:h=>h(hello1),
+    render: h => h(hello)
 })

@@ -1,30 +1,21 @@
 const webpack = require('webpack')
 const path = require('path')
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-
-//浏览器兼容性，决定使用browserlist的那个环境，默认production
-process.env.NODE_ENV = 'development'
+//浏览器兼容性，决定使用browserlist的那个环境，默认production生产环境
+//设置node环境变量
+// process.env.NODE_ENV = 'development'
 
 module.exports = {
     // mode: 'development', //设置当前环境为开发环境
     // mode:'production', //默认值为生产环境
-    mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+    // mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
     entry: "./src/main.js",//入口文件
     output: {
-        path: path.resolve(__dirname, 'dist'),//打包后的文件存放的地方
+        path: path.resolve(__dirname, '../dist'),//打包后的文件存放的地方
         filename: "js/bundle.js",//打包后输出文件的文件名
         // publicPath: 'dist/', //公共目录，将所有文件都加上此路径
-    },
-    devServer: {
-        contentBase: './dist', //为那个文件夹提供本地服务
-        open: true, //打开浏览器
-        host: '127.0.0.1', //主机
-        port: 3000, //端口
-        inline: true, //页面更新
-        compress: true, //启用gzip压缩
-        progress: true, //将进度条输出在控制台
     },
     module: {
         rules: [
@@ -38,7 +29,16 @@ module.exports = {
                             publicPath: '../'
                         }
                     },
-                    "css-loader"
+                    "css-loader",
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            ident: 'postcss',
+                            plugins: () => [
+                                require('postcss-preset-env')()
+                            ]
+                        }
+                    }
                 ]
             },
             {
@@ -55,6 +55,15 @@ module.exports = {
                     },
                     {
                         loader: "css-loader" // 解析css
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            ident: 'postcss',
+                            plugins: () => [
+                                require('postcss-preset-env')()
+                            ]
+                        }
                     },
                     {
                         loader: "less-loader" // 将less解析成css
@@ -113,19 +122,19 @@ module.exports = {
             },
         ]
     },
-    resolve: {
-        alias: {
-            'vue$': 'vue/dist/vue.esm.js'
-        }
-    },
+    // resolve: {
+    //     alias: {
+    //         'vue$': 'vue/dist/vue.esm.js' //如果出现template则用它解析
+    //     }
+    // },
     plugins: [
         new VueLoaderPlugin(),
         new webpack.BannerPlugin('===版权所有==='), //在文件头部添加添加版权
         new HtmlWebpackPlugin({
-            template: 'index.html' //指定默认模板
+            template: './index.html' //指定默认模板
         }), //将在dist/目录下生成一个默认html模板
         new MiniCssExtractPlugin({
             filename: 'css/[name].css'
-        })
+        }), //将css提取到单独文件中
     ]
 }

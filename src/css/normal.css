@@ -3,3 +3,10 @@ body{
     /* background: url("../img/small.jpg"); */
     background: url("../img/big.jpg");
 }
+.show{
+    width: 100px;
+    height: 100px;
+    background-color: pink;
+    display: flex;
+    backface-visibility: hidden;
+}
