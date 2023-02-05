@@ -43,6 +43,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "billd-html-webpack-plugin": "^0.0.27",
     "vue": "^2.6.11"
   },
   "browserslist": {
